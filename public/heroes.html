@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroes</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src = "js/main.js"></script>
+    <script src = "js/heroes.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href = "main.css" rel = "stylesheet">
+    <style>
+        .heroGrid {
+            width: 672px;
+            margin: 0px auto 0px auto;
+            font-size:0;
+        }
+        .heroGrid img, .heroGrid div img {
+            width: 96px;
+            height: 96px;
+            margin: 0px;
+            padding: 0px;
+            
+        }
+        .heroModals {
+            padding: 0px;
+            background-color: rgba(0, 0, 0, 0.75);
+            border: 20px solid transparent;
+            border-image-source: url(images/border.png);
+            border-image-slice: 10%;
+            border-image-repeat: round;
+            border-image-width: 40px;
+
+        }
+        .modal-header h5 {
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .modal-header, .modal-footer {
+            padding: 5px;
+            border-width: 2px;
+            border-color: #724e03;
+            /* border: none; 724e03*/
+        }
+        .modal-footer button {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .modal-body {
+            padding: 5px 0px 5px 0px;
+        }
+        .heroAbout {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            /* padding: 0px 5px 0px 5px; */
+        }
+        .heroPassive, .heroNotes {
+            width: 100%;
+            padding: 5px 0px 5px 0px;
+            margin: 5px 0px 5px 0px;
+            border-top: 2px solid #724e03;
+            text-align: center;
+            font-size: 1.25em;
+        }
+        .heroPassive p {
+            margin: 0px auto 10px auto;
+            width: 80%;
+        }
+        .modal-dialog {
+            max-width: 700px;
+        }
+        .stats-box {
+            width: 75%;
+            text-align: center;
+        }
+        .stats {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .img {
+            width: 25%;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+        .heroNotes {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .heroNotes ul h5{
+            text-align: center;
+            color: #FFCC00;
+            padding-left: 10px;
+        }
+        .heroNotes ul li {
+            color: white;
+        }
+        .stat-name {
+            display:block;
+            color: #FFCC00;
+        }
+        .closeButton {
+            width: 30%;
+            background-image: url("images/buttonbackground.png");
+            color: #FFCC00;
+            border: solid 2px #ffcc007e;
+        }
+        .stat {
+            padding-left: 15px;
+        }
+        .defaultSelect, .noneSelect {
+            color: black;
+        }
+/*#region select backgrounds*/
+        .arcaneSelect {
+            background-color: #6f2583;
+            color: white;
+        }
+        .fireSelect {
+             background-color: #ff0000;
+        }
+        .waterSelect {
+            background-color: #000080;
+        }
+        .windSelect {
+            background-color: #c0c0c0;
+        }
+        .earthSelect {
+            background-color: #d45e19;
+        }
+        .wildSelect {
+            background-color: #008000;
+        }
+        .energySelect {
+            background-color: #008080;
+        }
+        .darkSelect {
+            background-color: #313131;
+        }
+        .lightSelect {
+            background-color: #d2d2d2;
+        }
+        .coldSelect {
+            Background-color: #8080ff;
+        }
+        .poisonSelect {
+            Background-color: #104c0f;
+        }
+        .bloodSelect {
+            Background-color: #800000;
+        }
+        .heroGridBanner {
+            width: 672px;
+            height: 50px;
+            padding: 0 20px 0px 20px;
+            margin: 15px auto 0px auto;
+            background-color: black;
+            text-align: center;
+            line-height: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+/*#endregion*/
+		/* @media only screen and (max-width: 540px){
+			.buttons {
+				width: 100%;
+			}
+		} */
+
+    </style>
+    <script>
+        function bodyLoad(){
+            populateHeroModals();
+        }
+    </script>
+</head>
+<body onload="bodyLoad()">
+    <div id = "banner">
+        <a href = "http://chs-wiki.com/index.html"><div id ="logo">Custom Hero Survival</div></a>
+        <div id = "nav">
+            <a href = "http://chs-wiki.com/index.html"><button type = "button" class = "headerButton">Home</button></a>
+            <a href = "heroes.html"><button type = "button" class = "headerButton">Heroes</button></a>
+            <a href = "abilities.html"><button type = "button" class = "headerButton">Abilities</button></a>
+            <a href = "items.html"><button type = "button" class = "headerButton">Items</button></a>
+            <a href = "rules.html"><button type = "button" class = "headerButton">Rules</button></a>
+        </div>
+    </div>
+    <div class = "heroGridBanner">
+        <div>
+            Click an icon to learn more.
+        </div>
+        <div>
+            Filter Element
+            <select id = "heroFilter" onchange="heroElementFilter()">
+                <option value = 'default' class = 'defaultSelect' selected>Default</option>
+                <option value = 'none' class = 'noneSelect'>No Element</option>
+                <option value = 'arcane' class = 'arcaneSelect'>Arcane</option>
+                <option value = 'blood' class = 'bloodSelect'>Blood</option>
+                <option value = 'cold' class = 'coldSelect'>Cold</option>
+                <option value = 'dark' class = 'darkSelect'>Dark</option>
+                <option value = 'earth' class = 'earthSelect'>Earth</option>
+                <option value = 'energy' class = 'energySelect'>Energy</option>
+                <option value = 'fire' class = 'fireSelect'>Fire</option>
+                <option value = 'light' class = 'lightSelect'>Light</option>
+                <option value = 'poison' class = 'poisonSelect'>Poison</option>
+                <option value = 'water' class = 'waterSelect'>Water</option>
+                <option value = 'wild' class = 'wildSelect'>Wild</option>
+                <option value = 'wind' class = 'windSelect'>Wind</option>
+            </select>
+        </div>
+    </div>
+    <div class = "heroGrid">
+    <!-- 
+            <img src = "images/ogrewarrior.png" height = "64px" width = "64px" alt = "ogrewarrior" type = "button" data-bs-toggle = "modal" data-bs-target="#ogreWarrior-modal">
+            <img src = "images/knightofcold.png" height = "64px" width = "64px" alt = "knightofcold">
+            <img src = "images/doomguard.png" height = "64px" width = "64px" alt = "doomguard">
+            <img src = "images/druidoftheclaw.png" height = "64px" width = "64px" alt = "druidoftheclaw">
+            <img src = "images/gromhellscream.png" height = "64px" width = "64px" alt = "gromhellscream">
+            <img src = "images/golem.png" height = "64px" width = "64px" alt = "golem">
+            <img src = "images/trollberserker.png" height = "64px" width = "64px" alt = "trollberserker">
+            <img src = "images/centaruarcher.png" height = "64px" width = "64px" alt = "centaruarcher">
+            <img src = "images/sorcerer.png" height = "64px" width = "64px" alt = "sorcerer">
+            <img src = "images/pyromancer.png" height = "64px" width = "64px" alt = "pyromancer">
+            <img src = "images/avatarofdarkness.png" height = "64px" width = "64px" alt = "avatarofdarkness">
+            <img src = "images/blademaster.png" height = "64px" width = "64px" alt = "blademaster">
+            <img src = "images/ursawarrior.png" height = "64px" width = "64px" alt = "ursawarrior">
+            <img src = "images/yeti.png" height = "64px" width = "64px" alt = "yeti">
+            <img src = "images/greedygoblin.png" height = "64px" width = "64px" alt = "greedygoblin">
+            <img src = "images/abomination.png" height = "64px" width = "64px" alt = "abomination">
+            <img src = "images/lieutenant.png" height = "64px" width = "64px" alt = "lieutenant">
+            <img src = "images/pitlord.png" height = "64px" width = "64px" alt = "pitlord">
+            <img src = "images/fallenranger.png" height = "64px" width = "64px" alt = "fallenranger">
+            <img src = "images/wargolem.png" height = "64px" width = "64px" alt = "wargolem">
+            <img src = "images/trickster.png" height = "64px" width = "64px" alt = "trickster">
+            <img src = "images/tinker.png" height = "64px" width = "64px" alt = "tinker">
+            <img src = "images/demonhunter.png" height = "64px" width = "64px" alt = "demonhunter">
+            <img src = "images/dreadlord.png" height = "64px" width = "64px" alt = "dreadlord">
+            <img src = "images/randomhero.png" height = "64px" width = "64px" alt = "randomhero">
+            <img src = "images/darkhunter.png" height = "64px" width = "64px" alt = "darkhunter">
+            <img src = "images/mortarteam.png" height = "64px" width = "64px" alt = "mortarteam">
+            <img src = "images/tauren.png" height = "64px" width = "64px" alt = "tauren">
+            <img src = "images/gnomemaster.png" height = "64px" width = "64px" alt = "gnomemaster">
+            <img src = "images/headhunter.png" height = "64px" width = "64px" alt = "headhunter">
+            <img src = "images/mauler.png" height = "64px" width = "64px" alt = "mauler">
+            <img src = "images/mage.png" height = "64px" width = "64px" alt = "mage">
+            <img src = "images/nagasiren.png" height = "64px" width = "64px" alt = "nagasiren">
+            <img src = "images/wolfrider.png" height = "64px" width = "64px" alt = "wolfrider">
+            <img src = "images/xesil.png" height = "64px" width = "64px" alt = "xesil">
+            <img src = "images/lich.png" height = "64px" width = "64px" alt = "lich">
+            <img src = "images/thunderwitch.png" height = "64px" width = "64px" alt = "thunderwitch">
+            <img src = "images/skeletalbrute.png" height = "64px" width = "64px" alt = "skeletalbrute">
+            <img src = "images/witchdoctor.png" height = "64px" width = "64px" alt = "witchdoctor">
+            <img src = "images/ranger.png" height = "64px" width = "64px" alt = "ranger">
+            <img src = "images/huntress.png" height = "64px" width = "64px" alt = "huntress">
+            <img src = "images/ogremage.png" height = "64px" width = "64px" alt = "ogremage">
+            <img src = "images/grunt.png" height = "64px" width = "64px" alt = "grunt">
+            <img src = "images/banshee.png" height = "64px" width = "64px" alt = "banshee">
+            <img src = "images/murloc.png" height = "64px" width = "64px" alt = "murloc">
+            <img src = "images/mystic.png" height = "64px" width = "64px" alt = "mystic">
+            <img src = "images/medivh.png" height = "64px" width = "64px" alt = "medivh">
+            <img src = "images/ghoul.png" height = "64px" width = "64px" alt = "ghoul">
+            <img src = "images/seer.png" height = "64px" width = "64px" alt = "seer">
+            <img src = "images/arenamaster.png" height = "64px" width = "64px" alt = "arenamaster">
+     -->
+    </div>
+    <!-- Modals -->
+    <div id = "modals">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+</body>
+</html>
