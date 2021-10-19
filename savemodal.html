@@ -1,0 +1,134 @@
+<div class="modal fade ogrewarrior-modal" id="ogrewarrior-modal" tabindex="-1" aria-labelledby="ogrewarrior-ModalLabel" aria-hidden="true">
+    <div class="modal-dialog "> <!--modal-lg-->
+        <div class="modal-content heroModals">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ogrewarrior-ModalLabel"><script>document.write(heroName(heroes['ogreWarrior'].name, heroes['ogreWarrior'].nameProper))</script></h5>
+            </div>
+            <div class="modal-body">
+                <div class = "heroAbout">
+                    <div class = "img">
+                        <img src = "images/ogrewarriorportrait.png" alt = "ogrewarrior">
+                    </div>
+                    <div class = "stats-box">
+                        <h4>Primary Stat - <span style = "color: red;"><script>document.write(heroes['ogreWarrior'].primaryStat)</script></span></h4>
+                        <div class = "stats">
+                            <div>
+                                <ul>
+                                    <li>
+                                        <div class = "stat-name">Cast Backswing</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].animCastBackswing).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Cast Point</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].animCastPoint).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Attack Cooldown</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].attackCooldown).toFixed(2))</script></span>
+                                    </li>
+
+                                    <li>
+                                        <div class = "stat-name">Base Damage</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].baseDamage).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Damage Dice</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].diceQuantity).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Damage Per Die</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].diceDamage).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Base Defense</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].baseDefense).toFixed(2))</script></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <div class = "stat-name">Base Strength</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].baseStr).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Base Agility</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].baseAgi).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Base Inteligence</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].baseInt).toFixed(2))</script></span>
+                                    </li>
+
+                                    <li>
+                                        <div class = "stat-name">Base Health</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].baseHealth).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Base Mana</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].baseMana).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Range</div>
+                                        <span class = "stat"><script>document.write(getRange(heroes['ogreWarrior'].range))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Movement Speed</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].movementSpeed).toFixed(2))</script></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <div class = "stat-name">Strength Per Level</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].strPerLevel).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Agility Per Level</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].agiPerLevel).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Inteligence Per Level</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].intPerLevel).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Base Health Regen</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].healthRegen).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Base Mana Regen</div>
+                                        <span class = "stat"><script>document.write(parseFloat(heroes['ogreWarrior'].manaRegen).toFixed(2))</script></span>
+                                    </li>
+                                    <li>
+                                        <div class = "stat-name">Projectile Speed</div>
+                                        <span class = "stat"><script>document.write(getProjectileSpeed(heroes['ogreWarrior'].projectileSpeed))</script></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "heroPassive">
+                    <h4><script>document.write(passiveName(heroes['ogreWarrior'].passiveName) + " " + createElementString(heroes['ogreWarrior'].elements))</script></h4>
+                    <p><script>document.write(heroes['ogreWarrior'].passiveInfo)</script></p>
+                    <p><script>document.write(passiveName(passiveLevelInfo(heroes['ogreWarrior'].passiveLevelInfo)))</script></p>
+                </div>
+                <script>document.write(showHeroNotes(heroes['ogreWarrior'].heroNotes))</script>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary closeButton" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

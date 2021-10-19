@@ -1,0 +1,153 @@
+@font-face {
+    font-family: wc3font;
+    src: url(2002.ttf);
+}
+@font-face {
+    font-family: wc3logofont;
+    src: url(Warcraft_Font.ttf);
+}
+* {
+    font-family: wc3font;
+}
+body {
+    background-image: url("images/icetile.png");
+    color : white;
+}
+.levelInfo, .goldHint {
+    color: #FFCC00;
+}
+.fire, .ranged, .meele {
+    color: #ff0000;
+}
+.water {
+    color: #000080;
+    background-color: rgba(255, 255, 255, 0.295);
+}
+.wind {
+    color: #c0c0c0;
+}
+.earth {
+    color: #d45e19;
+}
+.wild {
+    color: #008000;
+}
+.energy {
+    color: #008080;
+}
+.dark {
+    /* color: #000000; */
+    color: #313131;
+    background-color: rgba(255, 255, 255, 0.39);
+}
+.light {
+    color: #d2d2d2;
+}
+.cold {
+    color: #8080ff;
+}
+.poison {
+    color: #104c0f;
+}
+.blood {
+    color: #800000;
+}
+.divinity {
+    color: #ffff96;
+}
+.arcane {
+    color: #6f2583;
+}
+.time {
+    color: #7a85ff;
+}
+.spirit {
+    color: #c0dec0;
+}
+.unpurgable {
+    color: #c880ff;
+}
+.stable {
+    color: #96ffff;
+}
+.mysterious, .yellowHint {
+    color: #ffff00;
+}
+.chaos {
+    color: #c8c8ff;
+}
+.lifesteal {
+    color: #ff9696;
+}
+.luck {
+    color: #80ff80;
+}
+.crit {
+    color: #00ffff;
+}
+.blueHint {
+    color: #00ffff;
+}
+.grayHint { 
+    color: #c0c0c0;
+}
+.onhit {
+    color: #d45e29;
+}
+.plain {
+     color: #ffff00;
+}
+.summon {
+    color: #ff6464;
+}
+.physical {
+   color: #ff8080;
+}
+.magical {
+    color: #ff00ff;
+}
+.economic {
+    color: #ffc896;
+}
+#banner {
+    height: 105;
+    width: 550px;
+    
+    /* background-color:white; */
+    margin: 0px auto 20px auto;
+    text-align: center;
+}
+.headerButton {
+    width: 100px;
+    height: 30px;
+    background-image: url("images/humanbutton.png");
+    color: white;
+    border: 5px solid transparent;
+    border-radius: 5px;
+    border-image-source: url(images/tooltipborder.png);
+    border-image-slice: 20%;
+    border-image-repeat: round;
+    border-image-width: 3px;
+}
+.headerButton:hover {
+    background-image: url("images/humanbuttonglow.png");
+    background-size: cover;
+    color: #FFCC00;
+}
+#logo {
+    font-family: wc3logofont;
+    font-size: 3.0em;
+    height: 75px;
+    line-height: 75px;
+    text-shadow: 5px 5px 1px black;
+    -webkit-text-fill-color: rgb(0, 70, 70);
+    -webkit-text-stroke-color: cyan;
+    -webkit-text-stroke-width: 1px;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+h3 {
+    text-align: center;
+}
