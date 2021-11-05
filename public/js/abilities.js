@@ -310,7 +310,7 @@ abilities['holyenlightenment'] = {
 abilities['timemanipulation'] = {
     name: "Time Manipulation",
     lumber: 40,
-    description: "When the Hero hasn't had any Chronus abilities active for a short period of time, it automatically activates all Chronus spells.<br>This cooldown increases every time it is activated, and resets at the end of the round.<br><span class = 'grayHint'>Cannot activate Holy Enlightenment.<br>If bought during a round it won't work until the next one.</span>",
+    description: "When the Hero hasn't had any Chronus abilities active for a short period of time, it automatically activates all Chronus and &#8220;Beginning of round&#8221; spells<br>This cooldown increases every time it is activated, and resets at the end of the round.<br><span class = 'grayHint'>Cannot activate Holy Enlightenment.<br>If bought during a round it won't work until the next one.</span>",
     abilityLevelBonus: "Cooldown increase reduction",
     heroLevelBonus: "",
     elements: ['arcane','light','stable'],
@@ -453,7 +453,7 @@ abilities['warstomp'] = {
 }
 abilities['thunderclap'] = {
     name: "Thunder Clap",
-    lumber: 10,
+    lumber: 15,
     description: "Slams the ground, dealing damage to nearby enemy land units and slowing their movement and attack speed.",
     abilityLevelBonus: "Damage, area of effect, movement speed reduction, attack speed reduction, duration",
     heroLevelBonus: "",
@@ -781,7 +781,7 @@ abilities['blink'] = {
     description: "Teleports a short distance, allowing the hero to move in and out of combat.",
     abilityLevelBonus: "Cooldown reduction, mana cost reduction",
     heroLevelBonus: "",
-    elements: ['arcane', 'energy', 'plain'],
+    elements: ['plain'],
     shop: "Active IV",
     position: 10
 }
@@ -1357,7 +1357,7 @@ abilities['fastmagic'] = {
 }
 abilities['manabonus'] = {
     name: "Mana Bonus",
-    lumber: 25,
+    lumber: 200,
     description: "Increases the Hero's mana for every [<span class = 'water'>Water</span>] spell it has.<br>After casting a [<span class = 'water'>Water</span>] spell, the Hero recovers a percentage of its mana.",
     abilityLevelBonus: "Mana Bonus",
     heroLevelBonus: "",
@@ -1652,7 +1652,7 @@ abilities['drainaura'] = {
 abilities['divinebubble'] = {
     name: "Divine Bubble",
     lumber: 25,
-    description: "Removes all negative buffs for a short period of time and makes the Hero immune to the effects of [|cffd45e29onhit|r] and [|cffff9696Lifesteal|r] abilities, automatically activates when the Hero is damaged.",
+    description: "Removes all negative buffs for a short period of time and makes the Hero immune to the effects of [<span class ='onhit'>Onhit</span>] and [<span class = 'lifesteal'>Lifesteal</span>] abilities, automatically activates when the Hero is damaged.",
     abilityLevelBonus: "Damage",
     heroLevelBonus: "",
     elements: ['light'],
