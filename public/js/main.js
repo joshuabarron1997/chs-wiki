@@ -126,6 +126,24 @@ function createTagString(tagArray){
 
     return tagHTML;
 }
+function createCurrencyString(id){
+    currencyString = `<div class = currency>`;
+    if (items[id].gold > 0){
+        currencyString += `<div><img src = "images/tooltipgoldicon.png" height = "24px" width = "24px" alt = "gold"> <span class = "goldHint">`+items[id].gold+`</span></div>`;
+    }
+    if (items[id].lumber > 0){
+        currencyString += `<div><img src = "images/tooltiplumbericon.png" height = "24px" width = "24px" alt = "lumber"> <span class = "goldHint">`+items[id].lumber+`</span></div>`;
+    }
+    currencyString += `</div><div class = "currency">`;
+    if (items[id].glory > 0){
+        currencyString += `<div class = "glory">Costs `+items[id].glory+` Glory.</div>`;
+    }
+    if (items[id].exp > 0){
+        currencyString += `<div class = "exp">Costs `+items[id].exp+` Experience.</div>`;
+    }
+    currencyString += `</div>`;
+    return currencyString;
+}
 function compileAbilityBonus(abilityBonus){
     let bonusHTML = "";
     if (abilityBonus !== ""){
@@ -754,7 +772,6 @@ function elementAbilitySort(element){ //this is for sorting both elements AND ta
 
     //alert(elementFilter);
 }
-
 function loadAbility(a, imagepath){
     let tooltip = 
     `
@@ -783,6 +800,102 @@ function loadAbility(a, imagepath){
     $('html,body').scrollTop(0);
 
     //console.log(a);
+}
+function defaultItemSort(){
+    let shops = []; //defines the shop array to insert into the html
+    for (let i = 0; i < itemShops.length; i++){ //passing through each shop
+        let tempItems = []; //defining the temp array for items we want in said shop
+        for (let x = 0; x < items.length; x++){ //passing through items checking for matching shop
+            if (items[x].shop === itemShops[i]){
+                tempItems.push(items[x]); //pushing said item into temp array
+            }
+        }
+        tempItems.sort(function(x, y){//sorts items by position ascending
+            return x.position - y.position;
+        })
+        shops[i] = "<div class = 'shop'><div class = 'shopHeader'>"+itemShops[i]+"</div>";//construction of shop html with each item
+        for (let y = 0; y < tempItems.length; y++){//placing each item in the shop
+            if (tempItems[y].name !== "blank"){
+                shops[i] += 
+                `
+                <img src = "images/itemicons/`+tempItems[y].fileName+`.png" height = "64px" width = "64px" alt = "`+tempItems[y].name+`" onClick = "loadItem('`+tempItems[y].id+`', '`+tempItems[y].fileName+`')"  class = "clickable">
+                `
+            }
+            else {
+                shops[i] += 
+                `
+                <img src = "images/blank.png" height = "64px" width = "64px" alt = "blank slot">
+                `
+            }
+
+        }
+        shops[i] += "</div>";
+    }
+    $('#shopContainer').html(shops);//posting html to shop container
+
+
+
+    /*
+    for (let i = 0; i < itemShops.length; i++){
+        shops[i] = "<div class = 'shop'><div class = 'shopHeader'>"+itemShops[i]+"</div>";
+        let position = 1;
+
+        for (let x = 0; x < items.length; x++){
+            if (items[x].shop === itemShops[i] && items[x].position === position){
+                alert(position);
+                shops[i] += 
+                `
+                <img src = "images/itemicons/`+items[x].fileName+`.png" height = "64px" width = "64px" alt = "`+items[x].name+`" onClick = "loadItem('`+x+`', '`+items[x].fileName+`')"  class = "clickable">
+                `
+                position++;
+            }
+
+            
+        }
+        shops[i] += "</div>";
+
+    }
+//console.log(shops);
+$('#shopContainer').html(shops)
+*/
+}
+function itemFilteredSort(filters){
+
+}
+function loadItem(i, imagepath){
+    //alert(items[i].name +" "+ imagepath);
+    let tooltip = 
+    `
+    <div>
+        <h4 class = "left"><img src = "images/itemicons/`+imagepath+`.png" height = "64px" width = "64px" alt = "`+items[i].name+`"> `+items[i].name+`</h4>
+        <div class = "currencyBox">`+createCurrencyString(i)+`</div>
+        <hr>
+        `+items[i].description+`
+    </div>
+    `;
+    //     <p><img src = "images/tooltiplumbericon.png" height = "24px" width = "24px" alt = "lumber"> <span class = "goldHint">`+abilities[a].lumber+`</span></p>
+    //     <hr>
+    //     <div class = "desc">
+    //         <div class = "test">
+    //             `+createElementString(abilities[a].elements)+`<br>
+    //             `+abilities[a].description+`
+    //         </div><br>
+    //         <div class = "bonuses">
+    //             `+compileAbilityBonus(abilities[a].abilityLevelBonus)+`
+    //             `+compileHeroBonus(abilities[a].heroLevelBonus)+`
+    //         </div>
+    //     </div>
+    // </div>
+    // <div>
+    //     <p>`+createTagString(abilities[a].elements)+`</p>
+    //     <p>Located in the `+abilities[a].shop+` Shop</p>
+    // </div>
+
+    // `;
+    $('.initial').html("");
+    $('#tooltip').html(tooltip);
+    $('html,body').scrollTop(0);
+
 }
 function resetFilter(){
     elementFilter = [];

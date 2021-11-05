@@ -540,7 +540,7 @@ heroes['abomination'] = {
 	passiveName: "Disease Cloud",
 	passiveInfo: "Nearby enemy units are diseased and take damage",
 	passiveLevelInfo: "Disease Cloud +40 damage",
-	heroNotes: ['Undead creeps from  PvE are unaffected by Disease Cloud','Damage from disease cloud stacks Absolute [<span class = "dark">Dark</span>]','Damage from disease cloud stacks Absolute [<span class = "poison">Poison</span>]']
+	heroNotes: ['Damage from disease cloud stacks Absolute [<span class = "dark">Dark</span>]','Damage from disease cloud stacks Absolute [<span class = "poison">Poison</span>]']
 };
 heroes['lieutenant'] = {
 	name: "Lieutenant",
@@ -806,8 +806,8 @@ heroes['randomHero'] = {
 	baseMana: 0,
 	healthRegen: 0,
 	manaRegen: 0,
-	elements: [''],
-	passiveName: "Randomize",
+	elements: ['arcane','blood','cold','dark','earth','energy','fire','light','poison','water','wild','wind'],
+	passiveName: "Randomize<br>",
 	passiveInfo: "Selects a random hero for you.",
 	passiveLevelInfo: "",
 	heroNotes: ['Randomizing grants +500 gold']
@@ -1376,7 +1376,7 @@ heroes['banshee'] = {
 	baseMana: 0,
 	healthRegen: .250,
 	manaRegen: .010,
-	elements: ['spirit'],
+	elements: ['arcane'],
 	passiveName: "Banshee's Curse",
 	passiveInfo: "75% of the Hero's maximum hit points are added to its mana. When the Hero takes damage its mana is reduced instead of its hit points. When it reaches 0 mana it dies.",
 	passiveLevelInfo: "",
