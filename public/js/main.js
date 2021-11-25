@@ -1,4 +1,5 @@
 let elementFilter = [];
+let itemFilter = [];
 
 function displayStats(heroName){
     console.log("nothing");
@@ -127,22 +128,134 @@ function createTagString(tagArray){
     return tagHTML;
 }
 function createCurrencyString(id){
-    currencyString = `<div class = currency>`;
+    let currencyString = "";
+    let currency1 = "";
+    let currency2 = "";
+
+    ////////////////////////
+    //column 1 of currency//
+    ////////////////////////
     if (items[id].gold > 0){
-        currencyString += `<div><img src = "images/tooltipgoldicon.png" height = "24px" width = "24px" alt = "gold"> <span class = "goldHint">`+items[id].gold+`</span></div>`;
+        currency1 += `<div><img src = "images/tooltipgoldicon.png" height = "24px" width = "24px" alt = "gold"> <span class = "goldHint">`+items[id].gold+`</span></div>`;
     }
     if (items[id].lumber > 0){
-        currencyString += `<div><img src = "images/tooltiplumbericon.png" height = "24px" width = "24px" alt = "lumber"> <span class = "goldHint">`+items[id].lumber+`</span></div>`;
+        currency1 += `<div><img src = "images/tooltiplumbericon.png" height = "24px" width = "24px" alt = "lumber"> <span class = "goldHint">`+items[id].lumber+`</span></div>`;
     }
-    currencyString += `</div><div class = "currency">`;
+    if (typeof items[id].gold === 'string'){
+        currency1 += `<div><img src = "images/tooltipgoldicon.png" height = "24px" width = "24px" alt = "gold"> <span class = "goldHint">`+items[id].gold+`</span></div>`;       
+    }
+    if (currency1 !== ""){
+        currency1 = "<div class = 'currency'>" + currency1 + "</div>";
+        currencyString += currency1;
+    }
+    
+    ////////////////////////
+    //column 2 of currency//
+    ////////////////////////
     if (items[id].glory > 0){
-        currencyString += `<div class = "glory">Costs `+items[id].glory+` Glory.</div>`;
+        currency2 += `<div class = "glory">Costs `+items[id].glory+` Glory.</div>`;
     }
     if (items[id].exp > 0){
-        currencyString += `<div class = "exp">Costs `+items[id].exp+` Experience.</div>`;
+        currency2 += `<div class = "exp">Costs `+items[id].exp+` Experience.</div>`;
     }
-    currencyString += `</div>`;
+    if (currency2 !== ""){
+        currency2 = "<div class = 'currency'>" + currency2 + "</div>";
+        currencyString += currency2;
+    }
+
     return currencyString;
+}
+function formatFilter(f){
+    let filterHTML = "";
+    switch (f) {
+        case 'Earth':
+            filterHTML = "[<span class = 'earth'>Earth</span>]";
+            break;
+        case 'Fire':
+            filterHTML = "[<span class = 'fire'>Fire</span>]";
+            break;
+        case 'Wind':
+            filterHTML = "[<span class = 'wind'>Wind</span>]";
+            break;
+        case 'Arcane':
+            filterHTML = "[<span class = 'arcane'>Arcane</span>]";
+            break;
+        case 'Spirit':
+            filterHTML = "[<span class = 'spirit'>Spirit</span>]";
+            break;
+        case 'Poison':
+            filterHTML = "[<span class = 'poison'>Poison</span>]";
+            break;
+        case 'Energy':
+            filterHTML = "[<span class = 'energy'>Energy</span>]";
+            break;
+        case 'Water':
+            filterHTML = "[<span class = 'water'>Water</span>]";
+            break;
+        case 'Cold':
+            filterHTML = "[<span class = 'cold'>Cold</span>]";
+            break;
+        case 'Dark':
+            filterHTML = "[<span class = 'dark'>Dark</span>]";
+            break;
+        case 'Light':
+            filterHTML = "[<span class = 'light'>Light</span>]";
+            break;
+        case 'Blood':
+            filterHTML = "[<span class = 'blood'>Blood</span>]";
+            break;
+        case 'Wild':
+            filterHTML = "[<span class = 'wild'>Wild</span>]";
+            break;
+        case 'Divinity':
+            filterHTML = "[<span class = 'divinity'>Divinity</span>]";
+            break;
+        case 'Time':
+            filterHTML = "[<span class = 'time'>Time</span>]";
+            break;
+        case 'Unpurgable':
+            filterHTML = "[<span class = 'unpurgable'>Unpurgable</span>]";
+            break;
+        case 'Stable':
+            filterHTML = "[<span class = 'stable'>Stable</span>]";
+            break;
+        case 'Mysterious':
+            filterHTML = "[<span class = 'mysterious'>Mysterious</span>]";
+            break;
+        case 'Chaos':
+            filterHTML = "[<span class = 'chaos'>Chaos</span>]";
+            break;
+        case 'Ranged':
+            filterHTML = "[<span class = 'ranged'>Ranged Only</span>]";
+            break;
+        case 'Meele':
+            filterHTML = "[<span class = 'meele'>Meele Only</span>]";
+            break;
+        case 'Lifesteal':
+            filterHTML = "[<span class = 'lifesteal'>Lifesteal</span>]";
+            break;
+        case 'Luck':
+            filterHTML = "[<span class = 'luck'>Luck</span>]";
+            break;
+        case 'Crit':
+            filterHTML = "[<span class = 'crit'>Crit</span>]";
+            break;
+        case 'Onhit':
+            filterHTML = "[<span class = 'onhit'>Onhit</span>]";
+            break;
+        case 'Plain':
+            filterHTML = "[<span class = 'plain'>Plain</span>]";
+            break;
+        case 'Summon':
+            filterHTML = "[<span class = 'summon'>Summon</span>]"
+            break;
+        case 'Economic':
+            filterHTML = "[<span class = 'economic'>Economic</span>]"
+            break;
+        default: 
+            filterHTML = f;
+    }
+    return filterHTML;
 }
 function compileAbilityBonus(abilityBonus){
     let bonusHTML = "";
@@ -716,6 +829,8 @@ function elementAbilitySort(element){ //this is for sorting both elements AND ta
             }    
         }
         console.log(sortedAbilities);
+
+
         filteredHTML = `<div class = "filteredBox">`;
         for (let x = 0; x < sortedAbilities.length; x++){
                 filteredHTML += 
@@ -832,35 +947,87 @@ function defaultItemSort(){
         shops[i] += "</div>";
     }
     $('#shopContainer').html(shops);//posting html to shop container
-
-
-
-    /*
-    for (let i = 0; i < itemShops.length; i++){
-        shops[i] = "<div class = 'shop'><div class = 'shopHeader'>"+itemShops[i]+"</div>";
-        let position = 1;
-
-        for (let x = 0; x < items.length; x++){
-            if (items[x].shop === itemShops[i] && items[x].position === position){
-                alert(position);
-                shops[i] += 
-                `
-                <img src = "images/itemicons/`+items[x].fileName+`.png" height = "64px" width = "64px" alt = "`+items[x].name+`" onClick = "loadItem('`+x+`', '`+items[x].fileName+`')"  class = "clickable">
-                `
-                position++;
-            }
-
-            
-        }
-        shops[i] += "</div>";
-
-    }
-//console.log(shops);
-$('#shopContainer').html(shops)
-*/
 }
-function itemFilteredSort(filters){
+function itemFilterSort(filter){
+    let size = itemFilter.length;
+    if (itemFilter.includes(filter)){
+        itemFilter.splice(itemFilter.indexOf(filter), 1);
+        console.log("remove filter ", itemFilter);
 
+        let sortedItems = [];
+        for (let x = 0; x < items.length; x++){
+            //filterPass = true, false on failing to have filter/tag, on pass add to display array with assoc
+            let filterPass = true;
+            for (let i = 0; i < itemFilter.length; i++){
+                if(items[x].filters.includes(itemFilter[i]) === false){
+                    filterPass = false;
+                }
+            }
+            if (filterPass){
+                //alert('inside filter pass');
+                console.log(items[x].name + " " + filterPass);
+                sortedItems[sortedItems.length] = items[x];
+            }    
+        }
+        //console.log(sortedItems);
+
+
+        filteredHTML = `<div class = "filteredBox">`;
+        for (let x = 0; x < sortedItems.length; x++){
+                filteredHTML += 
+                `
+                <img src = "images/itemicons/`+sortedItems[x].fileName+`.png" height = "64px" width = "64px" alt = "`+sortedItems[x].name+`" onClick = "loadItem('`+sortedItems[x].id+`', '`+sortedItems[x].fileName+`')"  class = "clickable">
+                `
+        }
+        filteredHTML += `</div>`;
+
+        if (sortedItems.length === 0){
+            filteredHTML = `<div class = "noresults">No Results</div>`
+        }
+        $('#shopContainer').html(filteredHTML);
+
+        if (itemFilter.length === 0){
+            defaultItemSort();
+            //$("#reset").click();
+        }
+        
+    } else {
+        itemFilter[size] = filter;
+        console.log("add filter ", itemFilter);
+
+        let sortedItems = [];
+        for (let x = 0; x < items.length; x++){
+            //filterPass = true, false on failing to have filter/tag, on pass add to display array with assoc
+            let filterPass = true;
+            for (let i = 0; i < itemFilter.length; i++){
+                //console.log(items[x].filters.includes(itemFilter[i]));
+                if(items[x].filters.includes(itemFilter[i]) === false){
+                    filterPass = false;
+                }
+            }
+            if (filterPass){
+                //alert('inside filter pass');
+                console.log(items[x].name + " " + filterPass);
+                sortedItems[sortedItems.length] = items[x];
+            }    
+        }
+        //console.log(sortedItems);
+        filteredHTML = `<div class = "filteredBox">`;
+        for (let x = 0; x < sortedItems.length; x++){
+                filteredHTML += 
+                `
+                <img src = "images/itemicons/`+sortedItems[x].fileName+`.png" height = "64px" width = "64px" alt = "`+sortedItems[x].name+`" onClick = "loadItem('`+sortedItems[x].id+`', '`+sortedItems[x].fileName+`')"  class = "clickable">
+                `
+        }
+        filteredHTML += `</div>`;
+
+        if (sortedItems.length === 0){
+            filteredHTML = `<div class = "noresults">No Results</div>`
+        }
+        $('.initial').html("Select an item for more information.");
+        $('#tooltip').html("");
+        $('#shopContainer').html(filteredHTML);
+    }
 }
 function loadItem(i, imagepath){
     //alert(items[i].name +" "+ imagepath);
@@ -872,38 +1039,34 @@ function loadItem(i, imagepath){
         <hr>
         `+items[i].description+`
     </div>
+    <div>
+        <br>
+        <p>`+createTagString(items[i].filters)+`</p>
+        <p>Located in `+items[i].shop+`</p>
+    </div>
     `;
-    //     <p><img src = "images/tooltiplumbericon.png" height = "24px" width = "24px" alt = "lumber"> <span class = "goldHint">`+abilities[a].lumber+`</span></p>
-    //     <hr>
-    //     <div class = "desc">
-    //         <div class = "test">
-    //             `+createElementString(abilities[a].elements)+`<br>
-    //             `+abilities[a].description+`
-    //         </div><br>
-    //         <div class = "bonuses">
-    //             `+compileAbilityBonus(abilities[a].abilityLevelBonus)+`
-    //             `+compileHeroBonus(abilities[a].heroLevelBonus)+`
-    //         </div>
-    //     </div>
-    // </div>
-    // <div>
-    //     <p>`+createTagString(abilities[a].elements)+`</p>
-    //     <p>Located in the `+abilities[a].shop+` Shop</p>
-    // </div>
-
-    // `;
     $('.initial').html("");
     $('#tooltip').html(tooltip);
     $('html,body').scrollTop(0);
 
 }
-function resetFilter(){
+function resetAbilityFilter(){
     elementFilter = [];
     $(':checkbox').each(function() {
         this.checked = false;
     });
     $('#tooltip').html("");
     defaultAbilitySort();
+}
+function resetItemFilter(){
+    //alert("inside");
+    itemFilter = [];
+    $(':checkbox').each(function() {
+        this.checked = false;
+    });
+    $('.initial').html("Select an item for more information.");
+    $('#tooltip').html("");
+    defaultItemSort();
 }
 function checkNoElement(){
     let noElements = `<div class = "filteredBox">`;
@@ -924,4 +1087,11 @@ function checkNoElement(){
     $('#shopContainer').html(noElements)
 
 }
+ function capitalize(string){
+     let arr = string.split(' ');
+     for (let i = 0; i < arr.length; i++){
+        arr[i] = arr[i].replace(arr[i].charAt(0), arr[i].charAt(0).toUpperCase());
+     }
+     return arr.join(' ');
+ }
 //showHeroNotes(heroes[heroesAssoc[i]].heroNotes)

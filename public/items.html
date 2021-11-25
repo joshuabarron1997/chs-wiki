@@ -101,6 +101,11 @@
         #shopContainer {
             margin-bottom: 20px;
         }
+        #tooltip {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
         #tooltip p {
             margin-bottom: 3px;
         }
@@ -116,10 +121,47 @@
         }
         .initial {
             margin: 0px auto 0px auto;
+            font-size: 1.5em;
         }
         .indent {
             display: inline-block;
             padding-left: 10px;
+        }
+        #filterTable {
+            width: 85%;
+            margin: 0px auto 0px auto;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+        .clearFilter {
+            margin: 0px auto 0px auto;
+            width: 130px;
+            height: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .filterButton {/*start here center align text*/
+            margin: 0px auto 0px auto;
+            width: 100px;
+            height: 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1.75em;
+        }
+        .filterButton div {
+            width: 100%;
+            text-align: center;
+        }
+        .filterButton:hover {
+            background-size: 125%;
+            background-repeat:no-repeat;
+            background-color: black;
+            background-image: url("images/humanbuttonglow.png");
+            background-position: center;
+            
         }
 
     </style>
@@ -127,6 +169,62 @@
         function bodyLoad(){
             console.log("items");
             defaultItemSort();
+            filterModalLoad();
+        }
+        function filterModalLoad(){
+            let checkboxArray = [];
+            for (let i = 0; i < items.length; i++){//i goes through the items
+                for (let x = 0; x < items[i].filters.length; x++){//x goes through each items filters
+                    if (checkboxArray.includes(items[i].filters[x]) || items[i].filters.length === 0){
+                        console.log("already loaded or invalid filter");
+                    }
+                    else {
+                        checkboxArray.push(items[i].filters[x]);
+                    }
+                }
+            }
+            let formattedArray = []
+            for (let i = 0; i < checkboxArray.length; i++){
+                formattedArray[i] = capitalize(checkboxArray[i]);
+            }
+            formattedArray.sort();
+            checkboxArray.sort();
+
+            let checkboxHTML = "";
+            for (let i = 0; i < checkboxArray.length; i++){
+                checkboxHTML += `
+                    <label class = "clickable"><input type="checkbox" onclick="itemFilterSort('`+checkboxArray[i]+`')"> `+formatFilter(formattedArray[i])+`</label>
+                `
+            }
+            $('#filterTable').html(checkboxHTML);
+
+
+            // let size = elementFilter.length;
+            // if (elementFilter.includes(element)){
+            //     elementFilter.splice(elementFilter.indexOf(element), 1);
+            //     console.log("remove element ", elementFilter);
+
+            //     let sortedAbilities = [];
+            //     for (let x = 0; x < abilitiesAssoc.length; x++){
+            //         //filterPass = true, false on failing to have element/tag, on pass add to display array with assoc
+            //         let filterPass = true;
+            //         for (let i = 0; i < elementFilter.length; i++){
+            //             if(abilities[abilitiesAssoc[x]].elements.includes(elementFilter[i]) === false){
+            //                 filterPass = false;
+            //             }
+            //         }
+            //         if (filterPass){
+            //             //alert('inside filter pass');
+            //             console.log(abilities[abilitiesAssoc[x]].name + " " + filterPass);
+            //             sortedAbilities[sortedAbilities.length] = abilitiesAssoc[x];
+            //         }    
+            //     }
+            //     console.log(sortedAbilities);
+            // }
+
+
+
+            //<label class = "clickable"><li><input type="checkbox" onclick="elementAbilitySort('arcane')"> [<span class = "arcane">Arcane</span>]</li></label>
         }
     </script>
 </head>
@@ -141,9 +239,9 @@
             <a href = "rules.html"><button type = "button" class = "headerButton">Rules</button></a>
         </div>
     </div>
-    <h3>WIP - item page will have a extensive filter menu and all items, and tomes? idk. <div type="button" data-bs-toggle="modal" data-bs-target="#filter-modal">filter</div></h3>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#filter-modal" class = "headerButton filterButton"><div>Filters</div></button>
     <div id = "itemContainer">
-        <div class = "initial">Select an item for more information.</div>
+        <div class = "initial crit">Select an item for more information.</div>
         <div id = "tooltip">
             
         </div>
@@ -156,11 +254,13 @@
         <div class="modal-dialog "> <!--modal-lg-->
             <div class="modal-content filterModal">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="filter-ModalLabel">not at all final</h5>
+                    <h5 class="modal-title" id="filter-ModalLabel">
+                        <button type="button" class="headerButton clearFilter" onclick="resetItemFilter()">Clear Filters</button>
+                    </h5>
                 </div>
                 <div class="modal-body">
-                    <div class = "filterTable">
-                        <div class = "checkbox">
+                    <div id = "filterTable">
+                        <!-- <div class = "checkbox">
                             <ul>
                                 <label class = "clickable"><li><input type="checkbox" onclick="elementAbilitySort('arcane')"> [<span class = "arcane">Arcane</span>]</li></label>
                                 <label class = "clickable"><li><input type="checkbox" onclick="elementAbilitySort('blood')"> [<span class = "blood">Blood</span>]</li></label>
@@ -188,8 +288,7 @@
                                 <label class = "clickable"><li><input type="checkbox" onclick="elementAbilitySort('summon')"> [<span class = "summon">Summon</span>]</li></label>
                                 <label class = "clickable"><li><input type="checkbox" onclick="elementAbilitySort('economic')"> [<span class = "economic">Economic</span>]</li></label>
                             </ul>
-                        </div>
-                        
+                        </div> -->
                     </div>
                 </div>
                 <div class="modal-footer">
