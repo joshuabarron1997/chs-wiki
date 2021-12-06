@@ -60,7 +60,7 @@ let abilitiesAssoc = [
     'blink',
     'manashield',
     'avatar',
-    'blackarrow',
+    'blank1',
     'bloodlust',
     'carrionbeetles',
     'coldarrows',
@@ -68,7 +68,7 @@ let abilitiesAssoc = [
     'faeriefire',
     'frostarmor',
     'parasite',
-    'raisedead',
+    'blank2',
     'innerfire',
     'searingarrows',
     'phaseshift',
@@ -164,6 +164,8 @@ let abilitiesAssoc = [
     'arcaneassault',
     'reflectionaura',
     'unlimitedagony',
+    'blackarrow',
+    'necromancersarmy',
     'midastouch',
     'silence',
     'stasistrap',
@@ -210,8 +212,8 @@ let shopsAssoc = [
 abilities['herobuff'] = {
     name: "Hero Buff",
     lumber: 20,
-    description: "At the start of every fight the Hero's attack damage and armor are temporarily increased.",
-    abilityLevelBonus: "Attack damage, armor",
+    description: "At the start of every fight the Hero's attack damage, armor, magic power, and magic resistance are temporarily increased.",
+    abilityLevelBonus: "Attack damage, armor, magic power, magic resistance",
     heroLevelBonus: "Attack damage, armor, duration",
     elements: ['light'],
     shop: "Chronus",
@@ -219,7 +221,7 @@ abilities['herobuff'] = {
 }
 abilities['temporaryinvisibility'] = {
     name: "Temporary Invisibility",
-    lumber: 75,
+    lumber: 40,
     description: "At the beginning of every fight the Hero temporarily becomes invisible.",
     abilityLevelBonus: "Duration",
     heroLevelBonus: "",
@@ -239,7 +241,7 @@ abilities['rapidrecovery'] = {
 }
 abilities['chronuswizard'] = {
     name: "Chronus Wizard",
-    lumber: 75,
+    lumber: 45,
     description: "Increases the duration of all abilities in the Chronus Spells shop. <br><span class = 'grayHint'>Does not affect the duration of Gnome Master's passive.</span>",
     abilityLevelBonus: "Duration bonus",
     heroLevelBonus: "",
@@ -249,7 +251,7 @@ abilities['chronuswizard'] = {
 }
 abilities['cheatermagic'] = {
     name: "Cheater Magic",
-    lumber: 75,
+    lumber: 50,
     description: "At the beginning of every fight the Hero's abilities temporarily recharge 95% faster.",
     abilityLevelBonus: "Duration",
     heroLevelBonus: "",
@@ -279,7 +281,7 @@ abilities['demonscurse'] = {
 }
 abilities['blessedprotection'] = {
     name: "Blessed Protection",
-    lumber: 35,
+    lumber: 20,
     description: "At the beginning of every fight all damage dealt to the Hero is reduced by 90%.",
     abilityLevelBonus: "Duration",
     heroLevelBonus: "",
@@ -289,7 +291,7 @@ abilities['blessedprotection'] = {
 }
 abilities['temporarypower'] = {
     name: "Temporary Power",
-    lumber: 85,
+    lumber: 45,
     description: "At the beginning of every fight the Hero's stats temporarily increase.",
     abilityLevelBonus: "Stat bonus",
     heroLevelBonus: "Stat bonus, duration",
@@ -322,10 +324,10 @@ abilities['timemanipulation'] = {
 abilities['spiritlink'] = {
     name: "Spirit Link",
     lumber: 20,
-    description: "Spirit Link has been temporarily disabled because it is bugged. It might be back in a future version.",
-    abilityLevelBonus: "",
+    description: "Links the Hero and all its summons together in a chain. All units with Spirit Link on them take less damage for each linked unit.<br><br><span class = 'grayHint'>Damage is reduced multiplicatively and cannot exceed 90%.</span>",
+    abilityLevelBonus: "damage share, damage reduction",
     heroLevelBonus: "",
-    elements: ['arcane'],
+    elements: ['arcane', 'summon'],
     shop: "Active I",
     position: 1
 }
@@ -373,7 +375,7 @@ abilities['immolation'] = {
     name: "Immolation",
     lumber: 10,
     description: "Activate Immolation to engulf the Hero in flames, causing damage per second to nearby enemy land units.",
-    abilityLevelBonus: "Damage per second, mana drained",
+    abilityLevelBonus: "Damage per second, mana drained, area of effect",
     heroLevelBonus: "",
     elements: ['fire','fire'],
     shop: "Active I",
@@ -432,7 +434,7 @@ abilities['volcano'] = {
 abilities['plague'] = {
     name: "Plague",
     lumber: 10,
-    description: "Summons rotten corpses that infect nearby enemy living units with Disease Cloud; dealing damage per second.",
+    description: "Summons rotten corpses that infect nearby enemy living units with Disease Cloud; dealing damage per second.<br><span class = 'grayHint'>If black arrow is learned, <span class = 'summon'>summon</span> 4 skeletons<br>Procs Skeletal Brutes passive damage/heal</span>",
     abilityLevelBonus: "Damage per second",
     heroLevelBonus: "damage up",
     elements: ['poison', 'poison'],
@@ -485,7 +487,7 @@ abilities['frostnova'] = {
     name: "Frost Nova",
     lumber: 10,
     description: "Blasts enemy units around a target enemy unit with a wave of damaging frost that slows movement and attack rate.",
-    abilityLevelBonus: "Damage, duration",
+    abilityLevelBonus: "Damage, duration, area of effect",
     heroLevelBonus: "",
     elements: ['water', 'ice'],
     shop: "Active II",
@@ -515,7 +517,7 @@ abilities['flamestrike'] = {
     name: "Flame Strike",
     lumber: 15,
     description: "Conjures a pillar of fire which damages enemy ground units in the target area over time.",
-    abilityLevelBonus: "Conjures a pillar of fire which damages enemy ground units in the target area over time.",
+    abilityLevelBonus: "Damage, area of effect",
     heroLevelBonus: "",
     elements: ['fire','fire'],
     shop: "Active II",
@@ -586,7 +588,7 @@ abilities['fingerofdeath'] = {
 abilities['acidspray'] = {
     name: "Acid Spray",
     lumber: 20,
-    description: "Sprays waves of acid, damaging units in a target area.",
+    description: "Sprays waves of acid, damaging units in a target area.<br><span class = 'grayHint'>Is not a channel</span>",
     abilityLevelBonus: "Damage, number of waves",
     heroLevelBonus: "",
     elements: ['poison'],
@@ -719,7 +721,7 @@ abilities['starfall'] = {
     name: "Starfall",
     lumber: 20,
     description: "Calls down waves of falling stars that damage nearby enemy units.<br><span class = 'grayHint'>Does not channel.</span>",
-    abilityLevelBonus: "Damage, damage interval",
+    abilityLevelBonus: "Damage, damage interval, area of effect",
     heroLevelBonus: "",
     elements: ['arcane', 'energy'],
     shop: "Active IV",
@@ -807,13 +809,13 @@ abilities['avatar'] = {
 }
 //#endregion
 //#region auto cast
-abilities['blackarrow'] = {
-    name: "Black Arrow",
+abilities['blank1'] = {
+    name: "blank",
     lumber: 10,
     description: "<span class = 'goldHint'>Unique Attack Modifier</span><br> Adds bonus damage to attacks. Units killed while under the effect of Black Arrow will turn into skeletons.",
     abilityLevelBonus: "Damage Bonus, summon hit points, summon damage",
     heroLevelBonus: "",
-    elements: ['dark', 'ranged', 'plain'],
+    elements: [],
     shop: "Auto Cast",
     position: 1
 }
@@ -887,13 +889,13 @@ abilities['parasite'] = {
     shop: "Auto Cast",
     position: 8
 }
-abilities['raisedead'] = {
-    name: "Raise Dead",
+abilities['blank2'] = {
+    name: "blank",
     lumber: 10,
     description: "Raises skeletons from a corpse.",
     abilityLevelBonus: "Summon hit points, summon damage",
     heroLevelBonus: "",
-    elements: ['dark', 'summon'],
+    elements: [],
     shop: "Auto Cast",
     position: 9
 }
@@ -982,7 +984,7 @@ abilities['pocketfactory'] = {
 abilities['serpentward'] = {
     name: "Serpent Ward",
     lumber: 20,
-    description: "Summons an immobile serpentine ward to attack enemies. The ward is immune to magic.",
+    description: "Summons an immobile serpentine ward to attack enemies.<br><span class = 'grayHint'>Are <em>not</em> magic immune<br>May be affected by auras</span>",
     abilityLevelBonus: "Summon hit points, summon damage, summon attack speed",
     heroLevelBonus: "",
     elements: ['arcane','wild', 'summon'],
@@ -1611,7 +1613,7 @@ abilities['fatalflaw'] = {
 }
 abilities['retaliationaura'] = {
     name: "Retaliation Aura",
-    lumber: 50,
+    lumber: 25,
     description: "When a nearby enemy player casts a active spell the Hero has a chance to cast the same spell back, targetting the enemy caster if possible. The retaliation spell deals a percentage of it's normal damage, and bonus damage if the Hero has learned it. <br><span class = 'grayHint'>Multicast and [<span class = 'plain'>Plain</span>] spells cannot be retaliated",
     abilityLevelBonus: "Retaliation damage, area of effect.",
     heroLevelBonus: "",
@@ -1778,7 +1780,7 @@ abilities['absolutepoison'] = {
 abilities['ancientblood'] = {
     name: "Ancient Blood",
     lumber: 56,
-    description: "Whenever the Hero has taken a certain amount of damage, all negative buffs are removed, it permanently gains bonus strength and the remaining cooldown of all its abilities that are currently on cooldown is reduced.<br><span class ='grayHint'>Cannot reset the cooldown of Last Breath or Divine Bubble.</span>",
+    description: "Whenever the Hero has taken a certain amount of damage, all negative buffs are removed, it permanently gains bonus strength and reduces the cooldown on abilities.<br><span class ='grayHint'>Cannot reset the cooldown of Last Breath or Divine Bubble.<br>Cooldown reduction has a 1 second cooldown</span>",
     abilityLevelBonus: "Damage threshold reduction, cooldown reduction",
     heroLevelBonus: "",
     elements: ['blood'],
@@ -1865,6 +1867,27 @@ abilities['unlimitedagony'] = {
     shop: "Passive VI",
     position: 9
 }
+abilities['blackarrow'] = {
+    name: "Black Arrow",
+    lumber: 10,
+    description: "When the Hero kills an enemy unit, it spawns a Skeleton Battlemaster and a Skeleton Warmage.<br><span class = 'grayHint'>if learned with plague, plague will <span class = 'summon'>summon</span> 4 skeletons</span><br><br><span class = 'summon'>Skeleton Battlemaster</span><br> <span class = 'indent'>When fatally struck, has a chance to defy death and restore health to full</span><br><span class = 'summon'>Skeleton Warmage</span><br><span class = 'indent'>Attacks deal magic damage and have chance to ignore enemy block.</span>",
+    abilityLevelBonus: "Skeleton stats, chance to defy death, chance to ignore block",
+    heroLevelBonus: "",
+    elements: ['dark', 'summon'],
+    shop: "Passive VI",
+    position: 10
+}
+abilities['necromancersarmy'] = {
+    name: "Necromancer's Army",
+    lumber: 25,
+    description: "When one of the Hero's non-skeleton summons is killed it is resurrected as a skeleton with identical hit points, armor, damage and other stats, but not abilities. The Hero can only have a certain number of skeletons active at any given moment.",
+    abilityLevelBonus: "Skeleton limit increase",
+    heroLevelBonus: "",
+    elements: ['dark', 'summon'],
+    shop: "Passive VI",
+    position: 11
+}
+
 
 //#endregion
 //#region active V
@@ -1911,10 +1934,10 @@ abilities['divineshield'] = {
 abilities['deathpact'] = {
     name: "Death Pact",
     lumber: 5,
-    description: "Kills a target friendly Undead unit, giving a percentage of its hit points to the hero.",
+    description: "Kills a target friendly summon, giving a percentage of its hit points to the hero.",
     abilityLevelBonus: "Conversion rate",
     heroLevelBonus: "",
-    elements: ['dark', 'dark'],
+    elements: ['dark', 'dark', 'summon'],
     shop: "Active V",
     position: 5
 }

@@ -95,7 +95,7 @@ body {
      color: #ffff00;
 }
 .summon {
-    color: #ff6464;
+    color: #9e5d07;
 }
 .physical {
    color: #ff8080;
@@ -196,4 +196,8 @@ h3 {
 }
 .left {
     text-align: left;
+}
+.indent {
+    display: inline-block;
+    padding-left: 10px;
 }

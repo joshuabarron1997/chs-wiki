@@ -70,6 +70,9 @@ function createElementString(elementArray){
             case 'time':
                 elementHTML += "[<span class = 'time'>Time</span>]";
                 break;
+            case 'summon':
+                elementHTML += "[<span class = 'summon'>Summon</span>]"
+                break;
             default: 
                 elementHTML += "";
         }
@@ -114,9 +117,6 @@ function createTagString(tagArray){
             case 'plain':
                 tagHTML += "[<span class = 'plain'>Plain</span>]";
                 break;
-            case 'summon':
-                tagHTML += "[<span class = 'summon'>Summon</span>]"
-                break;
             case 'economic':
                 tagHTML += "[<span class = 'economic'>Economic</span>]"
                 break;
@@ -148,7 +148,7 @@ function createCurrencyString(id){
         currency1 = "<div class = 'currency'>" + currency1 + "</div>";
         currencyString += currency1;
     }
-    
+
     ////////////////////////
     //column 2 of currency//
     ////////////////////////
@@ -984,6 +984,8 @@ function itemFilterSort(filter){
         if (sortedItems.length === 0){
             filteredHTML = `<div class = "noresults">No Results</div>`
         }
+        $('.initial').html("Select an item for more information.");
+        $('#tooltip').html("");
         $('#shopContainer').html(filteredHTML);
 
         if (itemFilter.length === 0){
