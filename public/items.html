@@ -163,6 +163,19 @@
             background-position: center;
             
         }
+        .filterHeader {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .filterHeader div {
+            width: 50%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;        
+        }
 
     </style>
     <script>
@@ -254,8 +267,13 @@
         <div class="modal-dialog "> <!--modal-lg-->
             <div class="modal-content filterModal">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="filter-ModalLabel">
-                        <button type="button" class="headerButton clearFilter" onclick="resetItemFilter()">Clear Filters</button>
+                    <h5 class="modal-title filterHeader" id="filter-ModalLabel">
+                        <div>
+                            <button type="button" class="headerButton clearFilter" onclick="resetItemFilter()">Clear Filters</button>
+                        </div>
+                        <div>
+                            <label class = "clickable"><input type = "checkbox" checked onclick="includesFilter()"> Must include all filters</label>
+                        </div>
                     </h5>
                 </div>
                 <div class="modal-body">

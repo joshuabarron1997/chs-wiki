@@ -1,6 +1,6 @@
 let elementFilter = [];
 let itemFilter = [];
-
+let includesallfilters = true;
 function displayStats(heroName){
     console.log("nothing");
 }
@@ -958,9 +958,21 @@ function itemFilterSort(filter){
         for (let x = 0; x < items.length; x++){
             //filterPass = true, false on failing to have filter/tag, on pass add to display array with assoc
             let filterPass = true;
-            for (let i = 0; i < itemFilter.length; i++){
-                if(items[x].filters.includes(itemFilter[i]) === false){
-                    filterPass = false;
+            if (includesallfilters){
+                for (let i = 0; i < itemFilter.length; i++){
+                    //console.log(items[x].filters.includes(itemFilter[i]));
+                    if(items[x].filters.includes(itemFilter[i]) === false){
+                        filterPass = false;
+                    }
+                }
+            }
+            else {
+                filterPass = false;
+                for (let i = 0; i < itemFilter.length; i++){
+                    //console.log(items[x].filters.includes(itemFilter[i]));
+                    if(items[x].filters.includes(itemFilter[i]) === true){
+                        filterPass = true;
+                    }
                 }
             }
             if (filterPass){
@@ -1001,12 +1013,25 @@ function itemFilterSort(filter){
         for (let x = 0; x < items.length; x++){
             //filterPass = true, false on failing to have filter/tag, on pass add to display array with assoc
             let filterPass = true;
-            for (let i = 0; i < itemFilter.length; i++){
-                //console.log(items[x].filters.includes(itemFilter[i]));
-                if(items[x].filters.includes(itemFilter[i]) === false){
-                    filterPass = false;
+
+            if (includesallfilters){
+                for (let i = 0; i < itemFilter.length; i++){
+                    //console.log(items[x].filters.includes(itemFilter[i]));
+                    if(items[x].filters.includes(itemFilter[i]) === false){
+                        filterPass = false;
+                    }
                 }
             }
+            else {
+                filterPass = false;
+                for (let i = 0; i < itemFilter.length; i++){
+                    //console.log(items[x].filters.includes(itemFilter[i]));
+                    if(items[x].filters.includes(itemFilter[i]) === true){
+                        filterPass = true;
+                    }
+                }
+            }
+
             if (filterPass){
                 //alert('inside filter pass');
                 console.log(items[x].name + " " + filterPass);
@@ -1031,6 +1056,57 @@ function itemFilterSort(filter){
         $('#shopContainer').html(filteredHTML);
     }
 }
+function sortCurrentFilters(){
+    let sortedItems = [];
+    for (let x = 0; x < items.length; x++){
+        //filterPass = true, false on failing to have filter/tag, on pass add to display array with assoc
+        let filterPass = true;
+        if (includesallfilters){
+            for (let i = 0; i < itemFilter.length; i++){
+                //console.log(items[x].filters.includes(itemFilter[i]));
+                if(items[x].filters.includes(itemFilter[i]) === false){
+                    filterPass = false;
+                }
+            }
+        }
+        else {
+            filterPass = false;
+            for (let i = 0; i < itemFilter.length; i++){
+                //console.log(items[x].filters.includes(itemFilter[i]));
+                if(items[x].filters.includes(itemFilter[i]) === true){
+                    filterPass = true;
+                }
+            }
+        }
+        if (filterPass){
+            //alert('inside filter pass');
+            console.log(items[x].name + " " + filterPass);
+            sortedItems[sortedItems.length] = items[x];
+        }    
+    }
+
+    filteredHTML = `<div class = "filteredBox">`;
+    for (let x = 0; x < sortedItems.length; x++){
+            filteredHTML += 
+            `
+            <img src = "images/itemicons/`+sortedItems[x].fileName+`.png" height = "64px" width = "64px" alt = "`+sortedItems[x].name+`" onClick = "loadItem('`+sortedItems[x].id+`', '`+sortedItems[x].fileName+`')"  class = "clickable">
+            `
+    }
+    filteredHTML += `</div>`;
+
+    if (sortedItems.length === 0){
+        filteredHTML = `<div class = "noresults">No Results</div>`
+    }
+    $('.initial').html("Select an item for more information.");
+    $('#tooltip').html("");
+    $('#shopContainer').html(filteredHTML);
+
+    if (itemFilter.length === 0){
+        defaultItemSort();
+        //$("#reset").click();
+    }
+}
+
 function loadItem(i, imagepath){
     //alert(items[i].name +" "+ imagepath);
     let tooltip = 
@@ -1095,5 +1171,16 @@ function checkNoElement(){
         arr[i] = arr[i].replace(arr[i].charAt(0), arr[i].charAt(0).toUpperCase());
      }
      return arr.join(' ');
+ }
+ function includesFilter(){
+     if (includesallfilters){
+        includesallfilters = false;
+     }
+     else if (!includesallfilters){
+        includesallfilters = true;
+     }
+
+     sortCurrentFilters();
+     console.log(includesallfilters);
  }
 //showHeroNotes(heroes[heroesAssoc[i]].heroNotes)

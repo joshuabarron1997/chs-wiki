@@ -1109,7 +1109,7 @@ heroes['xesil'] = {
 	elements: ['arcane','luck'],
 	passiveName: "Xesil's Legacy",
 	passiveInfo: "15% chance to reset a spells cooldown when cast. ",
-	passiveLevelInfo: "+100 mana, +1 mana regeneration",
+	passiveLevelInfo: "+.01% chance to reset spells<br>+100 mana, +1 mana regeneration",
 	heroNotes: ["Overrides the item of the same name if stronger and is overriden if weaker.","Does not reset the cooldown of spells with the [<span class = 'stable'>Stable</span>] tag."]
 };
 heroes['lich'] = {
@@ -1558,8 +1558,8 @@ heroes['arenaMaster'] = {
 	manaRegen: .010,
 	elements: ['earth'],
 	passiveName: "Arena Veteran",
-	passiveInfo: "",
-	passiveLevelInfo: "all rings in PVE Shop I are twice as effective",
+	passiveInfo: "All rings in PVE Shop I are twice as effective",
+	passiveLevelInfo: "+200 glory per level",
 	heroNotes: ['']
 };
 heroes['beastmaster'] = {
