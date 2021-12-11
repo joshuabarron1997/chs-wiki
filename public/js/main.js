@@ -1139,12 +1139,13 @@ function resetAbilityFilter(){
 function resetItemFilter(){
     //alert("inside");
     itemFilter = [];
-    $(':checkbox').each(function() {
+    $('#filterTable :checkbox').each(function() {
         this.checked = false;
     });
     $('.initial').html("Select an item for more information.");
     $('#tooltip').html("");
     defaultItemSort();
+    console.log(includesallfilters);
 }
 function checkNoElement(){
     let noElements = `<div class = "filteredBox">`;

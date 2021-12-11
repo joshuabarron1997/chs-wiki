@@ -832,11 +832,11 @@ let items = [
     gold: 3500,
     glory: 0,
     exp: 0,
-    description: "<span class = 'effects'>Effects</span><br><span class = 'indent'>+80 attack damage.<br></span><br><br>[<span class = 'goldHint'>Unique Attack Modifier</span>]<br><span class = 'indent'>The hero gains back 50% of attack damage dealt to enemies as hit points.<br><span class = 'grayHint'>Life gained via this item is not affected by the [<span class = 'lifesteal'>Lifesteal</span>] tag</span></span>",
+    description: "<span class = 'effects'>Effects</span><br><span class = 'indent'>+80 attack damage.<br></span><br><br>[<span class = 'goldHint'>Unique Attack Modifier</span>]<br><span class = 'indent'>The hero gains back 50% of attack damage dealt to enemies as hit points.</span>",
     shop: "Item Shop II",
     position: 11,
     id: '',
-    filters: ['attack damage','healing','passive ability']
+    filters: ['attack damage','healing','passive ability', 'lifesteal']
 },
 {
     fileName: "rapierofthegods",
@@ -1004,7 +1004,7 @@ let items = [
     gold: 36000,
     glory: 0,
     exp: 0,
-    description: "[<span class = 'unique'>Unique</span>]<br><span class = 'abilities'>Abilities</span><br><span class = 'indent'>+350% bonus attack damage.<br>The hero gains back 25% of all damage dealt as hit points.<br>5% chance to deal 10 times normal damage with <span class = 'physical'>physical attacks</span>.</span>",
+    description: "[<span class = 'unique'>Unique</span>]<br><span class = 'abilities'>Abilities</span><br><span class = 'indent'>+350% bonus attack damage.<br>The hero gains back 25% of all damage dealt as hit points.<br>5% chance to deal 10 times normal damage with <span class = 'physical'>physical damage</span>.</span>",
     shop: "Item Shop III",
     position: 1,
     id: '',
@@ -1389,7 +1389,7 @@ let items = [
 {
     fileName: "lightmagicshield",
     name: "Light Magic Shield",
-    gold: 16000,
+    gold: 4500,
     glory: 0,
     exp: 0,
     description: "<span class = 'effects'>Effects</span><br><span class = 'indent'>+1000 hit points.</span><br><br>[<span class = 'unique'>Unique</span>]<br><span class = 'abilities'>Abilities</span><br><span class = 'indent'>When the Hero has less than or equal to 50 armor it takes 30% less damage.</span>",
@@ -2086,7 +2086,7 @@ let items = [
     name: "Absolute Acorn",
     gold: 8000,
     glory: 0,
-    exp: 50000,
+    exp: 100000,
     description: "<span class = 'effects'>Effects</span><br><span class = 'indent'>You get an additional slot for absolute abilities.<br><br><span class = 'grayHint'>Does nothing if the Hero has less than 50.000 experience.",
     shop: "Power Ups Shop II",
     position: 3,
