@@ -1360,10 +1360,10 @@ abilities['fastmagic'] = {
 abilities['manabonus'] = {
     name: "Mana Bonus",
     lumber: 200,
-    description: "Increases the Hero's mana for every [<span class = 'water'>Water</span>] spell it has.<br>After casting a [<span class = 'water'>Water</span>] spell, the Hero recovers a percentage of its mana.",
+    description: "Increases the Hero's mana.",
     abilityLevelBonus: "Mana Bonus",
     heroLevelBonus: "",
-    elements: ['water'],
+    elements: ['water','energy'],
     shop: "Passive III",
     position: 7
 }
@@ -1894,7 +1894,7 @@ abilities['necromancersarmy'] = {
 abilities['midastouch'] = {
     name: "Midas' Touch",
     lumber: 35,
-    description: "Curses the target, if it dies while Midas' Touch is active it drops bonus gold.  Creeps hit by Midas' Touch become enraged, they gain maximum movement speed and their hp, damage, armor, block, magic power and magic protection increase.<br><span class = 'grayHint'>1% less effective for every level of Pillage, Learnability or Holy Enlightenment.</span>",
+    description: "Curses the target, if it dies while Midas' Touch is active it drops bonus gold.  Creeps hit by Midas' Touch become enraged, they gain maximum movement speed and their hp, damage, armor, block, magic power and magic protection increase.<br><span class = 'grayHint'>2% less effective for every level of Pillage, Learnability or Holy Enlightenment.</span>",
     abilityLevelBonus: "Gold multiplier",
     heroLevelBonus: "",
     elements: ['economic'],
